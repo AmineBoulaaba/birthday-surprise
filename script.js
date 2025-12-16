@@ -1,10 +1,9 @@
-// Password is set to the date you first met (change this!)
-// Format: DDMMYYYY - Example: 15072021 for July 15, 2021
-const PASSWORD = "CZepAB"; // CHANGE THIS TO YOUR ACTUAL DATE
+// Password is set to her birthday: 29th January = 2901
+const PASSWORD = "2901"; // DDMM format
 
 // DOM Elements
 const passwordScreen = document.getElementById('password-screen');
-const birthdayScreen = document.getElementById('birthday-screen');
+const surpriseScreen = document.getElementById('surprise-screen');
 const photosScreen = document.getElementById('photos-screen');
 const giftScreen = document.getElementById('gift-screen');
 const passwordInput = document.getElementById('password');
@@ -13,8 +12,8 @@ const showPhotosBtn = document.getElementById('show-photos');
 const showGiftBtn = document.getElementById('show-gift');
 const backToStartBtn = document.getElementById('back-to-start');
 
-// Change the name here
-document.getElementById('your-name').textContent = "Mimo"; // CHANGE TO YOUR NAME
+// Change the name here - PUT YOUR NAME!
+document.getElementById('your-name').textContent = "Mimo"; // CHANGE TO YOUR ACTUAL NAME
 
 // Set up event listeners
 submitPasswordBtn.addEventListener('click', checkPassword);
@@ -35,12 +34,7 @@ function checkPassword() {
     if (enteredPassword === PASSWORD) {
         // Correct password
         passwordScreen.classList.add('hidden');
-        birthdayScreen.classList.remove('hidden');
-        
-        // Start playing music
-        if (!musicPlaying) {
-            toggleMusic();
-        }
+        surpriseScreen.classList.remove('hidden');
         
         // Add some confetti effect
         createConfetti();
@@ -54,7 +48,7 @@ function checkPassword() {
         }, 500);
         
         // Show error message
-        alert("That's not the right password! Hint: Our initials combined with 'ep' (your initials first, then mines).");
+        alert("That's not the right code! Hint: It's a special date in DDMM format (like 2901 for 29th January)");
         passwordInput.value = '';
         passwordInput.focus();
     }
@@ -62,7 +56,7 @@ function checkPassword() {
 
 // Show photos screen
 function showPhotos() {
-    birthdayScreen.classList.add('hidden');
+    surpriseScreen.classList.add('hidden');
     photosScreen.classList.remove('hidden');
     
     // Add a little animation to photos
@@ -107,7 +101,6 @@ function goBackToStart() {
     passwordInput.focus();
 }
 
-
 // Create confetti effect
 function createConfetti() {
     const confettiContainer = document.querySelector('.confetti');
@@ -116,7 +109,7 @@ function createConfetti() {
     confettiContainer.innerHTML = '';
     
     // Create new confetti elements
-    const confettiTypes = ['fas fa-heart', 'fas fa-star', 'fas fa-birthday-cake', 'fas fa-gift'];
+    const confettiTypes = ['fas fa-heart', 'fas fa-star', 'fas fa-gift', 'fas fa-heart'];
     
     for (let i = 0; i < 20; i++) {
         const confetti = document.createElement('i');
